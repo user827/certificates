@@ -1,0 +1,28 @@
+FQDN = my.dns
+
+[ req ]
+default_bits            = 2048
+distinguished_name      = req_distinguished_name
+utf8 = yes
+req_extensions = v3_req
+prompt = no
+
+[ req_distinguished_name ]
+countryName                     = FI
+
+stateOrProvinceName             = Province
+
+localityName                    = City
+
+0.organizationName              = MyCompany
+
+organizationalUnitName          = Head
+
+commonName                      = $FQDN
+
+[ v3_req ]
+basicConstraints = CA:false
+subjectAltName = @my_subject_alt_names
+
+[ my_subject_alt_names ]
+DNS.1 = $FQDN
