@@ -1,3 +1,5 @@
+options.mk
+
 *.cnf
 !ca.template.cnf
 !csr.template.cnf

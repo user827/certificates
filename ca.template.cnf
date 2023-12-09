@@ -70,7 +70,7 @@ organizationalUnitName  = optional
 commonName              = supplied
 
 [ req ]
-default_bits            = 2048
+default_bits            = 4096
 distinguished_name      = req_distinguished_name
 attributes              = req_attributes
 utf8 = yes

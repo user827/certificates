@@ -1,3 +1,5 @@
+-include options.mk
+
 # CSR creation
 
 .PRECIOUS: %_ecparam.pem
@@ -7,7 +9,7 @@
 .PRECIOUS: %.key
 ifeq ($(keytype),rsa)
 %.key:
-	openssl genrsa -out "$@" 2048
+	openssl genpkey --algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out "$@"
 else
 %.key: %_ecparam.pem
 	openssl genpkey -paramfile "$<" -out "$@"
@@ -23,10 +25,10 @@ endif
 .PRECIOUS: ca.key
 ifeq ($(ca_keytype),rsa)
 ca.key:
-	openssl genrsa -aes256 -out "$@" 2048
+	openssl genpkey --algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out "$@"
 else
 ca.key: ca_ecparam.pem
-	openssl genpkey -aes256 -paramfile "$<" -out "$@"
+	openssl genpkey -paramfile "$<" -out "$@"
 endif
 
 .PRECIOUS: ca.csr
